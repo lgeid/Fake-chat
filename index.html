@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>WhatsApp Clone Pro Premium</title>
+    <title>WhatsApp Clone Pro - Lengkap</title>
     <style>
         :root {
             --bg-main: #f3f0eb;
@@ -15,8 +15,11 @@
             --icon-color: #54656f;
             --msg-left-bg: #ffffff;
             --msg-left-text: #111b21;
-            --msg-right-bg: #e2f7cb;
+            --msg-right-bg: #d9fdd3;
             --msg-right-text: #111b21;
+            --call-item-bg: #ffffff;
+            --call-missed-color: #e53935;
+            --call-normal-color: #25d366;
             --input-container-bg: #ffffff;
             --time-text: #667781;
             --time-right-text: #667781;
@@ -38,11 +41,14 @@
             --icon-color: #aebac1;
             --msg-left-bg: #202c33;
             --msg-left-text: #e9edef;
-            --msg-right-bg: #630d0d;
-            --msg-right-text: #e9edef;
+            --msg-right-bg: #005c4b;
+            --msg-right-text: #ffffff;
+            --call-item-bg: #202c33;
+            --call-missed-color: #ff5252;
+            --call-normal-color: #00e676;
             --input-container-bg: #2a3942;
             --time-text: #8696a0;
-            --time-right-text: #aebac1;
+            --time-right-text: #d1d7db;
             --tick-color: #53bdeb;
             --banner-bg: #182229;
             --banner-text: #fad97b;
@@ -88,7 +94,6 @@
         }
         .header-left { display: flex; align-items: center; gap: 2px; max-width: 75%; }
         
-        /* DIUBAH: Penyesuaian container & ukuran ikon panah kembali agar presisi seperti WA */
         .back-icon-btn { 
             display: flex; 
             align-items: center; 
@@ -101,6 +106,7 @@
             width: 24px;
             height: 24px;
             fill: var(--header-text);
+            stroke-width: 2;
         }
 
         .avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
@@ -109,7 +115,7 @@
         .user-status { font-size: 11.5px; color: var(--sub-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
         
         .header-icons { display: flex; align-items: center; gap: 20px; color: var(--icon-color); padding-right: 4px; }
-        .icon-svg { width: 22px; height: 22px; fill: none; stroke: var(--icon-color); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-svg { width: 22px; height: 22px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
         .icon-dots { width: 16px; height: 22px; fill: var(--icon-color); cursor: pointer; padding: 2px; }
 
         /* --- CHAT TIMELINE BOX --- */
@@ -126,7 +132,7 @@
             background-blend-mode: var(--chat-blend);
         }
         
-        .date-divider { align-self: center; background-color: var(--divider-bg); color: var(--divider-text); font-size: 12px; padding: 5px 12px; border-radius: 8px; margin: 10px 0; box-shadow: 0 1px 0.5px rgba(0,0,0,0.08); }
+        .date-divider { align-self: center; background-color: var(--divider-bg); color: var(--divider-text); font-size: 12px; padding: 5px 12px; border-radius: 8px; margin: 10px 0; box-shadow: 0 1px 0.5px rgba(0,0,0,0.08); font-weight: 500; }
         .encryption-banner { align-self: center; background-color: var(--banner-bg); color: var(--banner-text); font-size: 12px; text-align: center; padding: 9px 14px; border-radius: 10px; line-height: 1.4; max-width: 96%; margin-bottom: 10px; box-shadow: 0 1px 0.5px rgba(0,0,0,0.05); }
 
         /* Bubble Pesan */
@@ -139,12 +145,56 @@
             box-shadow: 0 1px 0.5px rgba(0,0,0,0.1);
             word-wrap: break-word;
             user-select: none;
+            cursor: move;
         }
         .msg-left { align-self: flex-start; background-color: var(--msg-left-bg); color: var(--msg-left-text); border-radius: 0px 8px 8px 8px; }
         .msg-right { align-self: flex-end; background-color: var(--msg-right-bg); color: var(--msg-right-text); border-radius: 8px 0px 8px 8px; }
         
         .message img.chat-img { width: 100%; max-width: 260px; border-radius: 6px; margin-bottom: 4px; display: block; }
         .chat-caption { font-size: 15px; margin-top: 4px; margin-bottom: 4px; display: block; }
+
+        /* --- ITEM PANGGILAN / TELEPON --- */
+        .call-item {
+            max-width: 85%;
+            background-color: var(--call-item-bg);
+            color: var(--msg-left-text);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 1px 0.5px rgba(0,0,0,0.1);
+            cursor: move;
+        }
+        .call-item.call-left { align-self: flex-start; border-radius: 0px 8px 8px 8px; }
+        .call-item.call-right { align-self: flex-end; border-radius: 8px 0px 8px 8px; }
+
+        .call-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        .call-icon.missed {
+            stroke: var(--call-missed-color);
+            fill: var(--call-missed-color);
+        }
+        .call-icon.normal {
+            stroke: var(--call-normal-color);
+            fill: var(--call-normal-color);
+        }
+        .call-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .call-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .call-subtitle {
+            font-size: 12px;
+            color: var(--sub-text);
+            margin-top: 1px;
+        }
         
         .time { 
             font-size: 11px; 
@@ -156,7 +206,7 @@
             align-items: center;
             gap: 4px;
         }
-        .msg-right .time {
+        .msg-right .time, .call-item .time {
             color: var(--time-right-text);
         }
         
@@ -167,9 +217,10 @@
         }
         .tick-svg path {
             stroke: var(--tick-color);
-            stroke-width: 1.8;
+            stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
+            fill: var(--tick-color);
         }
 
         /* --- BAR BOTTOM INPUT --- */
@@ -193,11 +244,11 @@
             flex: 1; background-color: var(--input-container-bg); border-radius: 25px; display: flex; align-items: center; padding: 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,0.05); min-height: 48px;
         }
         
-        .input-icon-btn { width: 24px; height: 24px; fill: none; stroke: var(--icon-color); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; flex-shrink: 0; }
+        .input-icon-btn { width: 24px; height: 24px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; flex-shrink: 0; }
         input[type="text"] { flex: 1; border: none; outline: none; padding: 10px 4px; font-size: 16px; background: transparent; color: var(--header-text); width: 100%; }
         
         .input-right-icons { display: flex; gap: 14px; align-items: center; flex-shrink: 0; }
-        .send-button { width: 48px; height: 48px; background-color: #008069; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.15); border: none; cursor: pointer; flex-shrink: 0; user-select: none; -webkit-user-select: none; }
+        .send-button { width: 48px; height: 48px; background-color: #00a884; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.15); border: none; cursor: pointer; flex-shrink: 0; user-select: none; -webkit-user-select: none; }
         .send-button svg { width: 22px; height: 22px; fill: #ffffff; }
 
         .reply-mode-active { background-color: #34b7f1 !important; transform: scale(1.05); }
@@ -225,29 +276,40 @@
             transform: scale(1.2);
         }
 
-        /* --- MODAL CAMERA PREVIEW --- */
+        /* --- MODAL EDIT WAKTU / PANGGILAN --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); z-index: 100; justify-content: center; align-items: center; padding: 20px;
         }
         .modal-card { background: var(--input-container-bg); width: 100%; max-width: 360px; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; color: var(--header-text); }
         .modal-card img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-        .modal-card input { padding: 12px; border: 1px solid var(--icon-color); border-radius: 8px; font-size: 15px; outline: none; width: 100%; background: transparent; color: var(--header-text); }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; }
+        .modal-card input, .modal-card select { padding: 12px; border: 1px solid var(--icon-color); border-radius: 8px; font-size: 15px; outline: none; width: 100%; background: transparent; color: var(--header-text); }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px; }
         .modal-actions button { padding: 10px 20px; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; user-select: none; -webkit-user-select: none; }
         .btn-cancel { background: rgba(0,0,0,0.05); color: var(--icon-color); }
-        .btn-send { background: #008069; color: #ffffff; transition: background-color 0.2s ease; }
+        .btn-send { background: #00a884; color: #ffffff; transition: background-color 0.2s ease; }
 
         /* --- PANEL DIALOG PENGATURAN DROPDOWN --- */
         .config-panel { 
-            display: none; position: fixed; top: 60px; right: 15px; width: 290px; background: var(--input-container-bg); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); padding: 16px; z-index: 60; color: var(--header-text); 
+            display: none; position: fixed; top: 60px; right: 15px; width: 320px; background: var(--input-container-bg); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); padding: 16px; z-index: 60; color: var(--header-text); 
         }
         .config-panel h4 { margin-bottom: 12px; border-bottom: 1px solid var(--icon-color); padding-bottom: 6px; }
         .config-panel label { font-size: 12px; color: var(--icon-color); display: block; margin-top: 10px; font-weight: 600; }
         .config-panel input, .config-panel select { width: 100%; padding: 8px 10px; margin-top: 4px; border: 1px solid var(--icon-color); border-radius: 6px; background: transparent; color: var(--header-text); font-size: 14px; }
         
         .config-panel .btn-action-container { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-        .config-panel .close-btn { background: #008069; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        .config-panel .close-btn { background: #00a884; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
         .config-panel .clear-btn { background: #b00020; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+
+        /* --- DRAG & DROP STYLE --- */
+        .dragging {
+            opacity: 0.6;
+            transform: scale(0.98);
+            z-index: 10;
+        }
+        .drop-zone {
+            border: 2px dashed var(--icon-color);
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -261,15 +323,21 @@
                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
                 </svg>
             </div>
-            <img src="https://i.pravatar.cc/100?img=60" id="chatAvatar" class="avatar" alt="Avatar">
+            <img src="https://i.pravatar.cc/100?img=12" id="chatAvatar" class="avatar" alt="Avatar">
             <div class="user-info">
-                <div class="user-name" id="chatName">Pak Syarif Lg</div>
-                <div class="user-status" id="chatStatus">terakhir dilihat hari ini pukul 19.49</div>
+                <div class="user-name" id="chatName">Qalbi Anakku</div>
+                <div class="user-status" id="chatStatus">terakhir dilihat kemarin pukul 22.37</div>
             </div>
         </div>
         <div class="header-icons">
-            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <!-- Ikon Telepon -->
+            <svg class="icon-svg" id="callVoiceBtn" viewBox="0 0 24 24" title="Panggilan Suara">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <!-- Ikon Video Call -->
+            <svg class="icon-svg" id="callVideoBtn" viewBox="0 0 24 24" title="Panggilan Video">
+                <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
             <svg class="icon-dots" id="menuDots" viewBox="0 0 4 16" onclick="toggleConfig()">
                 <circle cx="2" cy="2" r="2"/>
                 <circle cx="2" cy="8" r="2"/>
@@ -279,7 +347,6 @@
     </div>
 
     <div class="chat-box" id="chatBox" onclick="closeEmojiPanel()">
-        <div class="date-divider">Hari ini</div>
         <div class="encryption-banner">
             🔒 Pesan dan telepon terenkripsi secara end-to-end. Hanya orang di obrolan ini yang bisa membaca, mendengarkan, atau membagikannya. <strong>Pelajari selengkapnya.</strong>
         </div>
@@ -317,6 +384,36 @@
         <div class="emoji-panel" id="emojiPanel"></div>
     </div>
 
+    <!-- MODAL EDIT WAKTU & PANGGILAN -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal-card">
+            <h4 id="editTitle">Ubah Data Panggilan</h4>
+            
+            <label>Posisi Panggilan:</label>
+            <select id="editCallSide">
+                <option value="left">Kiri (Penerima)</option>
+                <option value="right">Kanan (Pengirim)</option>
+            </select>
+
+            <label>Status Panggilan:</label>
+            <select id="editCallStatus">
+                <option value="done">Berhasil / Terjawab</option>
+                <option value="missed">❌ Tak Terjawab</option>
+            </select>
+
+            <label>Durasi / Keterangan:</label>
+            <input type="text" id="editCallDuration" placeholder="Contoh: 53 dtk / Kosongkan jika tak terjawab">
+
+            <label>Jam & Menit (hh.mm):</label>
+            <input type="text" id="editTimeValue" placeholder="Contoh: 17.27">
+            
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeEditModal()">Batal</button>
+                <button class="btn-send" onclick="saveEditChanges()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="previewModal">
         <div class="modal-card">
             <img id="previewImg" src="" alt="Preview">
@@ -338,10 +435,10 @@
         </select>
         
         <label>Nama Kontak:</label>
-        <input type="text" id="newNameInput" value="Pak Syarif Lg">
+        <input type="text" id="newNameInput" value="Qalbi Anakku">
         
         <label>Status Waktu Obrolan (Sub-header):</label>
-        <input type="text" id="newStatusInput" value="terakhir dilihat hari ini pukul 19.49">
+        <input type="text" id="newStatusInput" value="terakhir dilihat kemarin pukul 22.37">
         
         <label>Foto Profil:</label>
         <input type="file" id="fileImgInput" accept="image/*" onchange="previewProfileFile()">
@@ -359,8 +456,10 @@
     const sendBtn = document.getElementById('sendBtn');
     const chatBox = document.getElementById('chatBox');
     const emojiPanel = document.getElementById('emojiPanel');
+    const editModal = document.getElementById('editModal');
+    let selectedItemIndex = null;
 
-    let chatHistory = JSON.parse(localStorage.getItem('wa_local_chats')) || [];
+    let chatHistory = JSON.parse(localStorage.getItem('wa_local_chats_v2')) || [];
     let pressTimer;
     let isLongPress = false;
 
@@ -380,6 +479,7 @@
         loadSavedConfig();
         renderAllMessages();
         initEmojiPanel();
+        initCallButtons();
         setTimeout(scrollToBottom, 200);
     });
 
@@ -423,7 +523,7 @@
     function checkEnter(event) { 
         if (event.key === 'Enter') {
             const textValue = msgInput.value.trim();
-            if (textValue !== "") processNewMessage('right', textValue);
+            if (textValue !== "") processNewMessage('text', 'right', textValue);
         }
     }
 
@@ -446,9 +546,9 @@
         
         if (textValue !== "") {
             if (isLongPress) {
-                processNewMessage('left', textValue);
+                processNewMessage('text', 'left', textValue);
             } else {
-                processNewMessage('right', textValue);
+                processNewMessage('text', 'right', textValue);
             }
         }
         isLongPress = false;
@@ -459,46 +559,290 @@
     sendBtn.addEventListener('mouseup', endPress);
     sendBtn.addEventListener('touchend', endPress);
 
-    function processNewMessage(side, contentText) {
+    // ==========================================
+    // FITUR PANGGILAN SUARA & VIDEO
+    // ==========================================
+    function initCallButtons() {
+        // Tombol Telepon Suara
+        document.getElementById('callVoiceBtn').addEventListener('click', () => {
+            // PILIH POSISI KIRI / KANAN
+            const posisi = prompt("Posisi Panggilan:\nKetik 'L' = Kiri (Penerima)\nKetik 'R' = Kanan (Pengirim)", "L");
+            if (!posisi) return;
+            const side = (posisi.toUpperCase() === 'R') ? 'right' : 'left';
+
+            // PILIH STATUS BERHASIL / TAK TERJAWAB
+            const jenis = confirm("Status Panggilan:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tak Terjawab");
+            
+            let data = {
+                type: 'call',
+                callType: 'voice',
+                status: jenis ? 'done' : 'missed',
+                duration: jenis ? prompt("Masukkan durasi (contoh: 53 dtk):", "53 dtk") : null,
+                side: side,
+                time: getCurrentTime(),
+                date: new Date().toISOString()
+            };
+            chatHistory.push(data);
+            saveHistory();
+            renderAllMessages();
+        });
+
+        // Tombol Video Call
+        document.getElementById('callVideoBtn').addEventListener('click', () => {
+            // PILIH POSISI KIRI / KANAN
+            const posisi = prompt("Posisi Panggilan:\nKetik 'L' = Kiri (Penerima)\nKetik 'R' = Kanan (Pengirim)", "L");
+            if (!posisi) return;
+            const side = (posisi.toUpperCase() === 'R') ? 'right' : 'left';
+
+            // PILIH STATUS BERHASIL / TAK TERJAWAB
+            const jenis = confirm("Status Panggilan:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tak Terjawab");
+            
+            let data = {
+                type: 'call',
+                callType: 'video',
+                status: jenis ? 'done' : 'missed',
+                duration: jenis ? prompt("Masukkan durasi (contoh: 29 dtk):", "29 dtk") : null,
+                side: side,
+                time: getCurrentTime(),
+                date: new Date().toISOString()
+            };
+            chatHistory.push(data);
+            saveHistory();
+            renderAllMessages();
+        });
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        return String(now.getHours()).padStart(2, '0') + '.' + String(now.getMinutes()).padStart(2, '0');
+    }
+
+    // ==========================================
+    // FUNGSI UTAMA PENGATURAN TANGGAL & WAKTU
+    // ==========================================
+    function getDateLabel(dateString) {
+        const msgDate = new Date(dateString);
+        const today = new Date();
+        
+        const msgOnlyDate = new Date(msgDate.getFullYear(), msgDate.getMonth(), msgDate.getDate());
+        const todayOnlyDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        
+        const diffDays = Math.floor((todayOnlyDate - msgOnlyDate) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "Hari ini";
+        if (diffDays === 1) return "Kemarin";
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return msgDate.toLocaleDateString('id-ID', options);
+    }
+
+    function processNewMessage(type, side, contentText) {
         if (contentText === '') return;
         const now = new Date();
-        const timeStr = String(now.getHours()).padStart(2, '0') + '.' + String(now.getMinutes()).padStart(2, '0');
+        const fullDate = now.toISOString(); 
+        const timeStr = getCurrentTime();
 
-        chatHistory.push({ side: side, content: contentText, time: timeStr });
-        localStorage.setItem('wa_local_chats', JSON.stringify(chatHistory));
-
+        chatHistory.push({ 
+            type: type,
+            side: side, 
+            content: contentText, 
+            time: timeStr,
+            date: fullDate
+        });
+        saveHistory();
         renderAllMessages();
         scrollToBottom();
         msgInput.value = '';
     }
 
+    // ==========================================
+    // RENDER SEMUA PESAN & PANGGILAN
+    // ==========================================
     function renderAllMessages() {
-        const oldMessages = chatBox.querySelectorAll('.message');
-        oldMessages.forEach(el => el.remove());
+        const oldElements = chatBox.querySelectorAll('.message, .call-item, .date-divider');
+        oldElements.forEach(el => el.remove());
 
-        chatHistory.forEach((msg, index) => {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('message', msg.side === 'left' ? 'msg-left' : 'msg-right');
-            
-            if (msg.side === 'right') {
-                msgDiv.innerHTML = `${msg.content} <span class="time">${msg.time} <svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg></span>`;
-            } else {
-                msgDiv.innerHTML = `${msg.content} <span class="time">${msg.time}</span>`;
+        let lastLabel = "";
+
+        chatHistory.forEach((item, index) => {
+            const currentLabel = getDateLabel(item.date);
+
+            if (currentLabel !== lastLabel) {
+                const divider = document.createElement('div');
+                divider.className = 'date-divider';
+                divider.innerText = currentLabel;
+                chatBox.appendChild(divider);
+                lastLabel = currentLabel;
             }
 
-            let deleteTimer;
-            msgDiv.addEventListener('touchstart', () => {
-                deleteTimer = setTimeout(() => {
-                    if (confirm('Hapus pesan ini?')) {
-                        chatHistory.splice(index, 1);
-                        localStorage.setItem('wa_local_chats', JSON.stringify(chatHistory));
-                        renderAllMessages();
-                    }
-                }, 1000);
-            });
-            msgDiv.addEventListener('touchend', () => clearTimeout(deleteTimer));
+            let element;
 
-            chatBox.appendChild(msgDiv);
+            if (item.type === 'call') {
+                // TAMPILAN PANGGILAN / TELEPON
+                element = document.createElement('div');
+                element.className = `call-item draggable call-${item.side}`;
+                element.draggable = true;
+                element.dataset.index = index;
+
+                const iconClass = item.status === 'missed' ? 'missed' : 'normal';
+                const iconSvg = item.callType === 'voice' 
+                    ? `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`
+                    : `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`;
+
+                const title = item.status === 'missed' 
+                    ? (item.callType === 'voice' ? 'Telepon suara tak terjawab' : 'Panggilan video tak terjawab')
+                    : (item.callType === 'voice' ? 'Telepon suara' : 'Panggilan video');
+
+                const subtitle = item.status === 'missed' 
+                    ? 'Ketuk untuk menelepon balik'
+                    : item.duration;
+
+                element.innerHTML = `
+                    ${iconSvg}
+                    <div class="call-content">
+                        <div class="call-title">${title}</div>
+                        <div class="call-subtitle">${subtitle}</div>
+                    </div>
+                    <span class="time">${item.time}</span>
+                `;
+
+                // Event tekan lama untuk EDIT LENGKAP (Posisi, Status, Waktu)
+                element.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    openEditModal(index, true); // true = ini data panggilan
+                });
+
+            } else {
+                // TAMPILAN PESAN BIASA
+                element = document.createElement('div');
+                element.className = `message draggable ${item.side === 'left' ? 'msg-left' : 'msg-right'}`;
+                element.draggable = true;
+                element.dataset.index = index;
+
+                if (item.content.includes('<img')) {
+                    element.innerHTML = `${item.content} <span class="time">${item.time} ${item.side === 'right' ? '<svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg>' : ''}</span>`;
+                } else {
+                    element.innerHTML = `${item.content} <span class="time">${item.time} ${item.side === 'right' ? '<svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg>' : ''}</span>`;
+                }
+
+                // Tekan lama untuk edit/hapus
+                let deleteTimer;
+                element.addEventListener('touchstart', () => {
+                    deleteTimer = setTimeout(() => {
+                        const pilihan = prompt("1=Edit Waktu\n2=Hapus");
+                        if (pilihan === '1') openEditModal(index, false); // false = pesan biasa
+                        if (pilihan === '2') {
+                            chatHistory.splice(index, 1);
+                            saveHistory();
+                            renderAllMessages();
+                        }
+                    }, 1000);
+                });
+                element.addEventListener('touchend', () => clearTimeout(deleteTimer));
+                element.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    openEditModal(index, false);
+                });
+            }
+
+            chatBox.appendChild(element);
+        });
+
+        initDragAndDrop();
+    }
+
+    // ==========================================
+    // FITUR UBAH LENGKAP: POSISI, STATUS, WAKTU
+    // ==========================================
+    function openEditModal(index, isCall = false) {
+        selectedItemIndex = index;
+        const item = chatHistory[index];
+
+        if (isCall) {
+            // JIKA ITEM ADALAH PANGGILAN
+            document.getElementById('editTitle').innerText = "Ubah Data Panggilan";
+            document.getElementById('editCallSide').value = item.side;
+            document.getElementById('editCallStatus').value = item.status;
+            document.getElementById('editCallDuration').value = item.duration || "";
+            document.getElementById('editTimeValue').value = item.time;
+            
+            // Tampilkan kolom khusus panggilan
+            document.getElementById('editCallSide').parentElement.style.display = 'block';
+            document.getElementById('editCallStatus').parentElement.style.display = 'block';
+            document.getElementById('editCallDuration').parentElement.style.display = 'block';
+
+        } else {
+            // JIKA ITEM ADALAH PESAN BIASA
+            document.getElementById('editTitle').innerText = "Ubah Waktu Pesan";
+            
+            // Sembunyikan kolom khusus panggilan
+            document.getElementById('editCallSide').parentElement.style.display = 'none';
+            document.getElementById('editCallStatus').parentElement.style.display = 'none';
+            document.getElementById('editCallDuration').parentElement.style.display = 'none';
+            document.getElementById('editTimeValue').value = item.time;
+        }
+        
+        editModal.style.display = 'flex';
+    }
+    function closeEditModal() {
+        editModal.style.display = 'none';
+        selectedItemIndex = null;
+    }
+    function saveEditChanges() {
+        const item = chatHistory[selectedItemIndex];
+        
+        if (item.type === 'call') {
+            // SIMPAN PERUBAHAN Panggilan
+            item.side = document.getElementById('editCallSide').value;
+            item.status = document.getElementById('editCallStatus').value;
+            item.duration = document.getElementById('editCallDuration').value;
+            item.time = document.getElementById('editTimeValue').value.trim() || item.time;
+        } else {
+            // SIMPAN PERUBAHAN Pesan
+            item.time = document.getElementById('editTimeValue').value.trim() || item.time;
+        }
+
+        saveHistory();
+        renderAllMessages();
+        closeEditModal();
+    }
+
+    // ==========================================
+    // FITUR GESER URUTAN (DRAG & DROP)
+    // ==========================================
+    let draggedElement = null;
+    function initDragAndDrop() {
+        const items = document.querySelectorAll('.draggable');
+        items.forEach(el => {
+            el.addEventListener('dragstart', (e) => {
+                draggedElement = el;
+                el.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+            el.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                el.classList.add('drop-zone');
+            });
+            el.addEventListener('dragleave', () => el.classList.remove('drop-zone'));
+            el.addEventListener('drop', (e) => {
+                e.preventDefault();
+                el.classList.remove('drop-zone');
+                if (draggedElement && draggedElement !== el) {
+                    const fromIndex = parseInt(draggedElement.dataset.index);
+                    const toIndex = parseInt(el.dataset.index);
+                    
+                    // Tukar posisi di data
+                    const temp = chatHistory[fromIndex];
+                    chatHistory.splice(fromIndex, 1);
+                    chatHistory.splice(toIndex, 0, temp);
+                    
+                    saveHistory();
+                    renderAllMessages();
+                }
+            });
+            el.addEventListener('dragend', () => {
+                draggedElement.classList.remove('dragging');
+                draggedElement = null;
+            });
         });
     }
 
@@ -563,9 +907,9 @@
             if (caption !== "") imgHTML += `<span class="chat-caption">${caption}</span>`;
             
             if (isImgLongPress) {
-                processNewMessage('left', imgHTML);
+                processNewMessage('text', 'left', imgHTML);
             } else {
-                processNewMessage('right', imgHTML);
+                processNewMessage('text', 'right', imgHTML);
             }
             
             previewModal.style.display = 'none';
@@ -584,6 +928,8 @@
     // CONFIG PANEL FUNCTIONS
     // ==========================================
     function toggleConfig() {
+        // ... (kode sebelumnya sama, lanjutkan dari sini)
+
         const panel = document.getElementById('configPanel');
         panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
     }
@@ -595,9 +941,9 @@
     }
 
     function clearAllChats() {
-        if (confirm('Apakah Anda yakin ingin membersihkan semua obrolan chat ini?')) {
+        if (confirm('Apakah Anda yakin ingin menghapus semua obrolan?')) {
             chatHistory = [];
-            localStorage.setItem('wa_local_chats', JSON.stringify(chatHistory));
+            saveHistory();
             renderAllMessages();
             toggleConfig();
         }
@@ -649,7 +995,12 @@
         document.getElementById('themeSelect').value = savedTheme;
         document.documentElement.setAttribute('data-theme', savedTheme);
     }
+
+    function saveHistory() {
+        localStorage.setItem('wa_local_chats_v2', JSON.stringify(chatHistory));
+    }
 </script>
 
 </body>
 </html>
+
