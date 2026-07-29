@@ -64,7 +64,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-        
+
         html, body {
             background-color: var(--bg-main);
             width: 100%;
@@ -93,7 +93,7 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         .header-left { display: flex; align-items: center; gap: 2px; max-width: 75%; }
-        
+
         .back-icon-btn { 
             display: flex; 
             align-items: center; 
@@ -123,7 +123,7 @@
             user-select: none;
         }
         .user-info { display: flex; flex-direction: column; margin-left: 8px; overflow: hidden; }
-        
+
         .user-name { 
             font-weight: 500; 
             font-size: 16px;
@@ -142,7 +142,7 @@
             margin-top: 1px;
             line-height: 14px;
         }
-        
+
         .header-icons { display: flex; align-items: center; gap: 20px; color: var(--icon-color); padding-right: 4px; }
         .icon-svg { width: 22px; height: 22px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
         .icon-dots { width: 16px; height: 22px; fill: var(--icon-color); cursor: pointer; padding: 2px; }
@@ -160,7 +160,7 @@
             background-image: var(--chat-bg-img);
             background-blend-mode: var(--chat-blend);
         }
-        
+
         .date-divider { align-self: center; background-color: var(--divider-bg); color: var(--divider-text); font-size: 12px; padding: 5px 12px; border-radius: 8px; margin: 10px 0; box-shadow: 0 1px 0.5px rgba(0,0,0,0.08); font-weight: 500; }
         .encryption-banner { align-self: center; background-color: var(--banner-bg); color: var(--banner-text); font-size: 12px; text-align: center; padding: 9px 14px; border-radius: 10px; line-height: 1.4; max-width: 96%; margin-bottom: 10px; box-shadow: 0 1px 0.5px rgba(0,0,0,0.05); }
 
@@ -178,7 +178,7 @@
         }
         .msg-left { align-self: flex-start; background-color: var(--msg-left-bg); color: var(--msg-left-text); border-radius: 0px 8px 8px 8px; }
         .msg-right { align-self: flex-end; background-color: var(--msg-right-bg); color: var(--msg-right-text); border-radius: 8px 0px 8px 8px; }
-        
+
         .message img.chat-img { width: 100%; max-width: 260px; border-radius: 6px; margin-bottom: 4px; display: block; }
         .chat-caption { font-size: 15px; margin-top: 4px; margin-bottom: 4px; display: block; }
 
@@ -224,7 +224,7 @@
             color: var(--sub-text);
             margin-top: 1px;
         }
-        
+
         .time { 
             font-size: 11px; 
             color: var(--time-text); 
@@ -238,7 +238,7 @@
         .msg-right .time, .call-item .time {
             color: var(--time-right-text);
         }
-        
+
         .tick-svg {
             display: inline-block;
             vertical-align: middle;
@@ -272,10 +272,10 @@
         .input-container {
             flex: 1; background-color: var(--input-container-bg); border-radius: 25px; display: flex; align-items: center; padding: 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,0.05); min-height: 48px;
         }
-        
+
         .input-icon-btn { width: 24px; height: 24px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; flex-shrink: 0; }
         input[type="text"] { flex: 1; border: none; outline: none; padding: 10px 4px; font-size: 16px; background: transparent; color: var(--header-text); width: 100%; }
-        
+
         .input-right-icons { display: flex; gap: 14px; align-items: center; flex-shrink: 0; }
         .send-button { width: 48px; height: 48px; background-color: #00a884; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.15); border: none; cursor: pointer; flex-shrink: 0; user-select: none; -webkit-user-select: none; }
         .send-button svg { width: 22px; height: 22px; fill: #ffffff; }
@@ -305,7 +305,7 @@
         .config-panel h4 { margin-bottom: 12px; border-bottom: 1px solid var(--icon-color); padding-bottom: 6px; }
         .config-panel label { font-size: 12px; color: var(--sub-text); display: block; margin-top: 10px; font-weight: 600; }
         .config-panel input, .config-panel select { width: 100%; padding: 8px 10px; margin-top: 4px; border: 1px solid var(--icon-color); border-radius: 6px; background: transparent; color: var(--header-text); font-size: 14px; }
-        
+
         .config-panel .btn-action-container { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
         .config-panel .close-btn { background: #00a884; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
         .config-panel .clear-btn { background: #b00020; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
@@ -385,7 +385,7 @@
 <body>
 
 <div class="chat-container">
-    
+
     <div class="chat-header">
         <div class="header-left">
             <div class="back-icon-btn">
@@ -431,9 +431,9 @@
                 <svg class="input-icon-btn" id="emojiToggleBtn" viewBox="0 0 24 24" onclick="toggleEmojiPanel(event)">
                     <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
                 </svg>
-                
+
                 <input type="text" id="msgInput" placeholder="Pesan" onkeypress="checkEnter(event)" onclick="closeEmojiPanel()">
-                
+
                 <div class="input-right-icons">
                     <svg class="input-icon-btn" id="attachBtn" viewBox="0 0 24 24" style="transform: rotate(45deg);">
                         <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
@@ -443,7 +443,7 @@
                     </svg>
                 </div>
             </div>
-            
+
             <button class="send-button" id="sendBtn" onclick="kirimPesan()">
                 <svg viewBox="0 0 24 24">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -468,7 +468,7 @@
     <div class="modal-overlay" id="editModal">
         <div class="modal-card">
             <h4 id="editTitle">Ubah Data</h4>
-            
+
             <label>Posisi Pesan:</label>
             <select id="editCallSide">
                 <option value="left">Kiri (Penerima)</option>
@@ -486,7 +486,10 @@
 
             <label>Jam & Menit (hh.mm):</label>
             <input type="text" id="editTimeValue" placeholder="Contoh: 17.27">
-            
+
+            <label>Tanggal Pesan:</label>
+            <input type="date" id="editDateValue">
+
             <div class="modal-actions">
                 <button class="btn-cancel" onclick="closeEditModal()">Batal</button>
                 <button class="btn-send" onclick="saveEditChanges()">Simpan</button>
@@ -508,22 +511,22 @@
     <!-- PENGATURAN LENGKAP DI SINI -->
     <div class="config-panel" id="configPanel">
         <h4>⚙️ Menu Simulasi</h4>
-        
+
         <label>Tema WhatsApp:</label>
         <select id="themeSelect" onchange="changeTheme()">
             <option value="light">☀️ Light Mode</option>
             <option value="dark">🌙 Dark Mode</option>
         </select>
-        
+
         <label>✏️ Ubah Nama / Nomor:</label>
         <input type="text" id="newNameInput" value="Pak Syarif Lg" placeholder="Contoh: 081234567890">
-        
+
         <label>✏️ Ubah Status / Waktu:</label>
         <input type="text" id="newStatusInput" value="terakhir dilihat kemarin pukul 21.12" placeholder="Contoh: online / terakhir dilihat...">
-        
+
         <label>🖼️ Foto Profil:</label>
         <input type="file" id="fileImgInput" accept="image/*" onchange="previewProfileFile()">
-        
+
         <div class="btn-action-container">
             <button class="initials-btn" onclick="buatAvatarInisial()">✨ Buat Foto dari Inisial</button>
             <button class="clear-btn" onclick="clearAllChats()">🧹 Bersihkan Semua Chat</button>
@@ -567,7 +570,7 @@
     function scrollToBottom() {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-    
+
     msgInput.addEventListener('focus', () => {
         setTimeout(scrollToBottom, 300);
     });
@@ -681,10 +684,10 @@
     function getDateLabel(dateString) {
         const msgDate = new Date(dateString);
         const today = new Date();
-        
+
         const msgOnlyDate = new Date(msgDate.getFullYear(), msgDate.getMonth(), msgDate.getDate());
         const todayOnlyDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-        
+
         const diffDays = Math.floor((todayOnlyDate - msgOnlyDate) / (1000 * 60 * 60 * 24));
 
         if (diffDays === 0) return "Hari ini";
@@ -798,7 +801,7 @@
             document.getElementById('editCallStatus').value = item.status;
             document.getElementById('editCallDuration').value = item.duration || "";
             document.getElementById('editTimeValue').value = item.time;
-            
+
             document.getElementById('statusLabel').style.display = 'block';
             document.getElementById('editCallStatus').style.display = 'block';
             document.getElementById('durasiLabel').style.display = 'block';
@@ -808,28 +811,50 @@
             document.getElementById('editTitle').innerText = "Ubah Data Pesan";
             document.getElementById('editCallSide').value = item.side;
             document.getElementById('editTimeValue').value = item.time;
-            
+
             document.getElementById('statusLabel').style.display = 'none';
             document.getElementById('editCallStatus').style.display = 'none';
             document.getElementById('durasiLabel').style.display = 'none';
             document.getElementById('editCallDuration').style.display = 'none';
         }
-        
+
+        // Memuat Tanggal ke dalam Form Edit
+        if (item.date) {
+            const dateObj = new Date(item.date);
+            const yyyy = dateObj.getFullYear();
+            const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const dd = String(dateObj.getDate()).padStart(2, '0');
+            document.getElementById('editDateValue').value = `${yyyy}-${mm}-${dd}`;
+        } else {
+            document.getElementById('editDateValue').value = ""; 
+        }
+
         editModal.style.display = 'flex';
     }
+
     function closeEditModal() {
         editModal.style.display = 'none';
         selectedItemIndex = null;
     }
+
     function saveEditChanges() {
         const item = chatHistory[selectedItemIndex];
-        
+
         item.side = document.getElementById('editCallSide').value;
         item.time = document.getElementById('editTimeValue').value.trim() || item.time;
 
         if (item.type === 'call') {
             item.status = document.getElementById('editCallStatus').value;
             item.duration = document.getElementById('editCallDuration').value;
+        }
+
+        // Menyimpan Tanggal yang Diubah
+        const newDate = document.getElementById('editDateValue').value;
+        if (newDate) {
+            const oldDateObj = item.date ? new Date(item.date) : new Date();
+            const [year, month, day] = newDate.split('-');
+            oldDateObj.setFullYear(year, month - 1, day);
+            item.date = oldDateObj.toISOString();
         }
 
         saveHistory();
@@ -857,11 +882,11 @@
                 if (draggedElement && draggedElement !== el) {
                     const fromIndex = parseInt(draggedElement.dataset.index);
                     const toIndex = parseInt(el.dataset.index);
-                    
+
                     const temp = chatHistory[fromIndex];
                     chatHistory.splice(fromIndex, 1);
                     chatHistory.splice(toIndex, 0, temp);
-                    
+
                     saveHistory();
                     renderAllMessages();
                 }
@@ -881,7 +906,7 @@
     const previewImg = document.getElementById('previewImg');
     const captionInput = document.getElementById('captionInput');
     const confirmUploadBtn = document.getElementById('confirmUploadBtn');
-    
+
     let tempImageBase64 = "";
 
     attachBtn.addEventListener('click', () => attachImageInput.click());
@@ -897,8 +922,7 @@
                 previewModal.style.display = 'flex';
                 captionInput.focus();
             };
-            reader.readAsDataURL(file
-        );
+            reader.readAsDataURL(file);
         }
         event.target.value = '';
     }
@@ -916,7 +940,7 @@
             const caption = captionInput.value.trim();
             let imgHTML = `<img src="${tempImageBase64}" class="chat-img" alt="Photo">`;
             if (caption !== "") imgHTML += `<span class="chat-caption">${caption}</span>`;
-            
+
             bukaPopupPosisi((posisi) => {
                 processNewMessage('text', posisi, imgHTML);
                 previewModal.style.display = 'none';
