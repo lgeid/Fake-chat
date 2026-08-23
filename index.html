@@ -2,24 +2,23 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>WhatsApp Clone - Lengkap & Berfungsi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>WhatsApp Clone - Super Detail & Modern Call UI</title>
     <style>
         :root {
-            --bg-main: #f3f0eb;
+            /* Tema Light - Real WA */
+            --bg-main: #efeae2;
             --chat-bg-img: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-            --chat-blend: overlay;
-            --header-bg: #f4f1eb;
-            --header-text: #111b21;
+            --chat-blend: normal;
+            --header-bg: #008069;
+            --header-text: #ffffff;
             --sub-text: #667781;
-            --icon-color: #54656f;
+            --icon-color: #ffffff;
             --msg-left-bg: #ffffff;
             --msg-left-text: #111b21;
             --msg-right-bg: #d9fdd3;
             --msg-right-text: #111b21;
-            --call-item-bg: #ffffff;
-            --call-missed-color: #e53935;
-            --call-normal-color: #25d366;
+            --call-missed-color: #ea0038;
             --input-container-bg: #ffffff;
             --time-text: #667781;
             --time-right-text: #667781;
@@ -32,6 +31,7 @@
         }
 
         [data-theme="dark"] {
+            /* Tema Dark - Real WA */
             --bg-main: #0b141a;
             --chat-bg-img: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
             --chat-blend: soft-light;
@@ -43,9 +43,7 @@
             --msg-left-text: #e9edef;
             --msg-right-bg: #005c4b;
             --msg-right-text: #ffffff;
-            --call-item-bg: #202c33;
             --call-missed-color: #ff5252;
-            --call-normal-color: #00e676;
             --input-container-bg: #2a3942;
             --time-text: #8696a0;
             --time-right-text: #d1d7db;
@@ -55,6 +53,81 @@
             --divider-bg: #182229;
             --divider-text: #8696a0;
             --emoji-bg: #111b21;
+        }
+
+        [data-theme="amoled"] {
+            /* Tema AMOLED Dark */
+            --bg-main: #000000;
+            --chat-bg-img: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            --chat-blend: soft-light;
+            --header-bg: #0a1014;
+            --header-text: #e9edef;
+            --sub-text: #8696a0;
+            --icon-color: #aebac1;
+            --msg-left-bg: #1e272c;
+            --msg-left-text: #e9edef;
+            --msg-right-bg: #005c4b;
+            --msg-right-text: #ffffff;
+            --call-missed-color: #ff5252;
+            --input-container-bg: #1e272c;
+            --time-text: #8696a0;
+            --time-right-text: #d1d7db;
+            --tick-color: #53bdeb;
+            --banner-bg: #0a1014;
+            --banner-text: #fad97b;
+            --divider-bg: #0a1014;
+            --divider-text: #8696a0;
+            --emoji-bg: #000000;
+        }
+
+        [data-theme="blue"] {
+            /* Tema Biru - Ocean */
+            --bg-main: #e4edf5;
+            --chat-bg-img: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            --chat-blend: multiply;
+            --header-bg: #2b5278;
+            --header-text: #ffffff;
+            --sub-text: #aebfd1;
+            --icon-color: #ffffff;
+            --msg-left-bg: #ffffff;
+            --msg-left-text: #0f1419;
+            --msg-right-bg: #e1f0fa;
+            --msg-right-text: #0f1419;
+            --call-missed-color: #ff3b30;
+            --input-container-bg: #ffffff;
+            --time-text: #687a86;
+            --time-right-text: #507185;
+            --tick-color: #007aff;
+            --banner-bg: #fff0d4;
+            --banner-text: #1d252b;
+            --divider-bg: #ffffff;
+            --divider-text: #455a64;
+            --emoji-bg: #e4edf5;
+        }
+
+        [data-theme="pink"] {
+            /* Tema Pink - Sakura */
+            --bg-main: #fce4ec;
+            --chat-bg-img: none;
+            --chat-blend: normal;
+            --header-bg: #e91e63;
+            --header-text: #ffffff;
+            --sub-text: #f8bbd0;
+            --icon-color: #ffffff;
+            --msg-left-bg: #ffffff;
+            --msg-left-text: #212121;
+            --msg-right-bg: #f8bbd0;
+            --msg-right-text: #212121;
+            --call-missed-color: #d32f2f;
+            --input-container-bg: #ffffff;
+            --time-text: #757575;
+            --time-right-text: #616161;
+            --tick-color: #1976d2;
+            --banner-bg: #fff8e1;
+            --banner-text: #424242;
+            --divider-bg: #ffffff;
+            --divider-text: #757575;
+            --emoji-bg: #f8bbd0;
         }
 
         * {
@@ -68,8 +141,15 @@
         html, body {
             background-color: var(--bg-main);
             width: 100%;
-            height: 100%;
+            height: 100%; 
             overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        body.keyboard-aktif .chat-box {
+            padding-bottom: 20px !important;
         }
 
         .chat-container {
@@ -80,7 +160,7 @@
             position: relative;
         }
 
-        /* --- HEADER STYLES - UKURAN PERSIS WA ASLI --- */
+        /* --- HEADER --- */
         .chat-header {
             background-color: var(--header-bg);
             color: var(--header-text);
@@ -91,80 +171,30 @@
             flex-shrink: 0;
             z-index: 50;
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
         }
         .header-left { display: flex; align-items: center; gap: 2px; max-width: 75%; }
 
-        .back-icon-btn { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            cursor: pointer; 
-            padding: 4px;
-            margin-right: 2px;
-        }
-        .back-icon-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--header-text);
-            stroke-width: 2;
-        }
+        .back-icon-btn { display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 4px; margin-right: 2px; }
+        .back-icon-btn svg { width: 24px; height: 24px; fill: var(--header-text); stroke-width: 2; transition: fill 0.3s ease;}
 
         .avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-        .avatar-initials {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-weight: 500;
-            font-size: 15px;
-            user-select: none;
-        }
+        .avatar-initials { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: 500; font-size: 15px; user-select: none; }
         .user-info { display: flex; flex-direction: column; margin-left: 8px; overflow: hidden; }
 
-        .user-name { 
-            font-weight: 500; 
-            font-size: 16px;
-            color: var(--header-text); 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            line-height: 19px;
-        }
-        .user-status { 
-            font-size: 12px;
-            color: var(--sub-text); 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            margin-top: 1px;
-            line-height: 14px;
-        }
+        .user-name { font-weight: 500; font-size: 16px; color: var(--header-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 19px; transition: color 0.3s ease;}
+        .user-status { font-size: 12px; color: var(--sub-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; line-height: 14px; transition: color 0.3s ease;}
 
         .header-icons { display: flex; align-items: center; gap: 20px; color: var(--icon-color); padding-right: 4px; }
-        .icon-svg { width: 22px; height: 22px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; }
-        .icon-dots { width: 16px; height: 22px; fill: var(--icon-color); cursor: pointer; padding: 2px; }
+        .icon-svg { width: 22px; height: 22px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; transition: stroke 0.3s ease;}
+        .icon-dots { width: 16px; height: 22px; fill: var(--icon-color); cursor: pointer; padding: 2px; transition: fill 0.3s ease;}
 
-        /* --- CHAT TIMELINE BOX --- */
-        .chat-box {
-            flex: 1; 
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            padding: 12px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background-color: var(--bg-main);
-            background-image: var(--chat-bg-img);
-            background-blend-mode: var(--chat-blend);
-        }
+        /* --- CHAT BOX --- */
+        .chat-box { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; background-color: var(--bg-main); background-image: var(--chat-bg-img); background-blend-mode: var(--chat-blend); transition: background-color 0.3s ease;}
+        .date-divider { align-self: center; background-color: var(--divider-bg); color: var(--divider-text); font-size: 12px; padding: 5px 12px; border-radius: 8px; margin: 10px 0; box-shadow: 0 1px 0.5px rgba(0,0,0,0.08); font-weight: 500; transition: all 0.3s ease;}
+        .encryption-banner { align-self: center; background-color: var(--banner-bg); color: var(--banner-text); font-size: 12px; text-align: center; padding: 9px 14px; border-radius: 10px; line-height: 1.4; max-width: 96%; margin-bottom: 10px; box-shadow: 0 1px 0.5px rgba(0,0,0,0.05); transition: all 0.3s ease;}
 
-        .date-divider { align-self: center; background-color: var(--divider-bg); color: var(--divider-text); font-size: 12px; padding: 5px 12px; border-radius: 8px; margin: 10px 0; box-shadow: 0 1px 0.5px rgba(0,0,0,0.08); font-weight: 500; }
-        .encryption-banner { align-self: center; background-color: var(--banner-bg); color: var(--banner-text); font-size: 12px; text-align: center; padding: 9px 14px; border-radius: 10px; line-height: 1.4; max-width: 96%; margin-bottom: 10px; box-shadow: 0 1px 0.5px rgba(0,0,0,0.05); }
-
-        /* Bubble Pesan */
+        /* Bubble Pesan Teks */
         .message {
             max-width: 85%;
             padding: 6px 10px 5px 10px;
@@ -175,211 +205,118 @@
             word-wrap: break-word;
             user-select: none;
             cursor: move;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .msg-left { align-self: flex-start; background-color: var(--msg-left-bg); color: var(--msg-left-text); border-radius: 0px 8px 8px 8px; }
         .msg-right { align-self: flex-end; background-color: var(--msg-right-bg); color: var(--msg-right-text); border-radius: 8px 0px 8px 8px; }
 
-        .message img.chat-img { width: 100%; max-width: 260px; border-radius: 6px; margin-bottom: 4px; display: block; }
-        .chat-caption { font-size: 15px; margin-top: 4px; margin-bottom: 4px; display: block; }
+        .message.has-image { padding: 4px 4px 6px 4px; }
+        .message img.chat-img { width: 100%; max-width: 260px; border-radius: 6px; margin-bottom: 2px; display: block; }
+        .chat-caption { font-size: 15px; padding: 2px 6px 14px 6px; display: inline-block; width: 100%; }
+        .message.has-image .time { position: absolute; bottom: 4px; right: 10px; }
 
-        /* --- ITEM PANGGILAN / TELEPON --- */
-        .call-item {
-            max-width: 85%;
-            background-color: var(--call-item-bg);
-            color: var(--msg-left-text);
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 1px 0.5px rgba(0,0,0,0.1);
-            cursor: move;
+        /* 👇 TAMPILAN ITEM PANGGILAN (VERSI WA TERBARU) 👇 */
+        .call-item { 
+            max-width: 80%; 
+            background-color: var(--msg-left-bg); 
+            color: var(--msg-left-text); 
+            border-radius: 8px; 
+            padding: 8px 10px 8px 8px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            box-shadow: 0 1px 0.5px rgba(0,0,0,0.1); 
+            cursor: move; 
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .call-item.call-left { align-self: flex-start; border-radius: 0px 8px 8px 8px; }
-        .call-item.call-right { align-self: flex-end; border-radius: 8px 0px 8px 8px; }
+        .call-item.call-right { align-self: flex-end; background-color: var(--msg-right-bg); color: var(--msg-right-text); border-radius: 8px 0px 8px 8px; }
 
-        .call-icon {
-            width: 20px;
-            height: 20px;
+        /* Badge Pembungkus Icon */
+        .call-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
         }
-        .call-icon.missed {
-            stroke: var(--call-missed-color);
-            fill: var(--call-missed-color);
+        [data-theme="dark"] .call-badge,
+        [data-theme="amoled"] .call-badge {
+            background-color: rgba(255, 255, 255, 0.08);
         }
-        .call-icon.normal {
-            stroke: var(--call-normal-color);
-            fill: var(--call-normal-color);
-        }
-        .call-content {
-            display: flex;
-            flex-direction: column;
-        }
-        .call-title {
-            font-size: 15px;
-            font-weight: 500;
-        }
-        .call-subtitle {
-            font-size: 12px;
-            color: var(--sub-text);
-            margin-top: 1px;
+        .call-badge.missed {
+            background-color: rgba(234, 0, 56, 0.12);
         }
 
-        .time { 
-            font-size: 11px; 
-            color: var(--time-text); 
-            float: right; 
-            margin-top: 5px; 
-            margin-left: 8px; 
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .msg-right .time, .call-item .time {
-            color: var(--time-right-text);
-        }
+        .call-icon { width: 22px; height: 22px; flex-shrink: 0; }
+        .call-icon.missed { stroke: var(--call-missed-color); fill: none; }
+        .call-icon.normal { stroke: var(--msg-left-text); fill: none; }
+        .msg-right .call-icon.normal { stroke: var(--msg-right-text); }
 
-        .tick-svg {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 1px;
-        }
-        .tick-svg path {
-            stroke: var(--tick-color);
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: var(--tick-color);
-        }
+        .call-content { display: flex; flex-direction: column; flex: 1; padding-right: 38px; }
+        .call-title { font-size: 14.5px; font-weight: 600; line-height: 18px; }
+        .call-subtitle { font-size: 12.5px; color: var(--sub-text); margin-top: 2px; line-height: 15px; transition: color 0.3s ease; }
+        .msg-right .call-subtitle { color: var(--time-right-text); }
+
+        .time { font-size: 11px; color: var(--time-text); float: right; margin-top: 5px; margin-left: 8px; display: inline-flex; align-items: center; gap: 4px; transition: color 0.3s ease;}
+        .msg-right .time { color: var(--time-right-text); }
+        .call-item .time { position: absolute; bottom: 6px; right: 8px; font-size: 11px; margin: 0; float: none; }
+
+        .tick-svg { display: inline-block; vertical-align: middle; margin-left: 1px; }
+        .tick-svg path { stroke: var(--tick-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: var(--tick-color); transition: stroke 0.3s ease, fill 0.3s ease;}
 
         /* --- BAR BOTTOM INPUT --- */
-        .bottom-bar {
-            padding: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            background: transparent;
-            flex-shrink: 0;
-            width: 100%;
-            z-index: 40;
-        }
-        .input-row {
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            width: 100%;
-        }
-        .input-container {
-            flex: 1; background-color: var(--input-container-bg); border-radius: 25px; display: flex; align-items: center; padding: 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,0.05); min-height: 48px;
-        }
+        .bottom-bar { padding: 8px; display: flex; flex-direction: column; gap: 6px; background: transparent; flex-shrink: 0; width: 100%; z-index: 40; }
+        .input-row { display: flex; align-items: flex-end; gap: 6px; width: 100%; }
+        .input-container { flex: 1; background-color: var(--input-container-bg); border-radius: 25px; display: flex; align-items: center; padding: 0 14px; box-shadow: 0 1px 1px rgba(0,0,0,0.05); min-height: 48px; transition: background-color 0.3s ease;}
 
-        .input-icon-btn { width: 24px; height: 24px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; flex-shrink: 0; }
-        input[type="text"] { flex: 1; border: none; outline: none; padding: 10px 4px; font-size: 16px; background: transparent; color: var(--header-text); width: 100%; }
+        .input-icon-btn { width: 24px; height: 24px; fill: none; stroke: var(--icon-color); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; cursor: pointer; flex-shrink: 0; transition: stroke 0.3s ease;}
+        
+        input[type="text"].main-input { flex: 1; border: none; outline: none; padding: 10px 8px; font-size: 17px; background: transparent; color: var(--header-text); width: 100%; transition: color 0.3s ease;}
+        input[type="text"].main-input::placeholder { color: var(--time-text); font-size: 17px;}
 
         .input-right-icons { display: flex; gap: 14px; align-items: center; flex-shrink: 0; }
-        .send-button { width: 48px; height: 48px; background-color: #00a884; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.15); border: none; cursor: pointer; flex-shrink: 0; user-select: none; -webkit-user-select: none; }
+        .send-button { width: 48px; height: 48px; background-color: var(--header-bg); border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,0.15); border: none; cursor: pointer; flex-shrink: 0; user-select: none; -webkit-user-select: none; transition: background-color 0.3s ease;}
         .send-button svg { width: 22px; height: 22px; fill: #ffffff; }
 
-        .reply-mode-active { background-color: #34b7f1 !important; transform: scale(1.05); }
-
-        /* --- PANEL EMOJI SYSTEM --- */
-        .emoji-panel {
-            display: none;
-            width: 100%; height: 220px; background-color: var(--emoji-bg); border-top: 1px solid rgba(0,0,0,0.08); overflow-y: auto; padding: 12px; grid-template-columns: repeat(8, 1fr); gap: 12px; justify-items: center; user-select: none;
-        }
+        .emoji-panel { display: none; width: 100%; height: 220px; background-color: var(--emoji-bg); border-top: 1px solid rgba(0,0,0,0.08); overflow-y: auto; padding: 12px; grid-template-columns: repeat(8, 1fr); gap: 12px; justify-items: center; user-select: none; transition: background-color 0.3s ease;}
         .emoji-item { font-size: 26px; cursor: pointer; transition: transform 0.1s ease; }
         .emoji-item:active { transform: scale(1.2); }
-
-        /* --- MODAL EDIT WAKTU / PANGGILAN --- */
+        
+        /* Modals & Popups */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
         .modal-card { background: var(--input-container-bg); width: 100%; max-width: 360px; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; color: var(--header-text); }
         .modal-card img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
         .modal-card input, .modal-card select { padding: 12px; border: 1px solid var(--icon-color); border-radius: 8px; font-size: 15px; outline: none; width: 100%; background: transparent; color: var(--header-text); }
-        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px; }
-        .modal-actions button { padding: 10px 20px; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; user-select: none; -webkit-user-select: none; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+        .modal-actions button { padding: 10px 16px; border: none; border-radius: 20px; font-weight: 600; cursor: pointer; flex: 1; }
         .btn-cancel { background: rgba(0,0,0,0.05); color: var(--icon-color); }
-        .btn-send { background: #00a884; color: #ffffff; transition: background-color 0.2s ease; }
-
-        /* --- PANEL DIALOG PENGATURAN DROPDOWN --- */
+        .btn-delete { background: #e53935; color: #ffffff; } 
+        .btn-send { background: var(--header-bg); color: #ffffff; transition: background-color 0.2s ease; }
+        
         .config-panel { display: none; position: fixed; top: 60px; right: 15px; width: 320px; background: var(--input-container-bg); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); padding: 16px; z-index: 60; color: var(--header-text); }
         .config-panel h4 { margin-bottom: 12px; border-bottom: 1px solid var(--icon-color); padding-bottom: 6px; }
         .config-panel label { font-size: 12px; color: var(--sub-text); display: block; margin-top: 10px; font-weight: 600; }
         .config-panel input, .config-panel select { width: 100%; padding: 8px 10px; margin-top: 4px; border: 1px solid var(--icon-color); border-radius: 6px; background: transparent; color: var(--header-text); font-size: 14px; }
-
         .config-panel .btn-action-container { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-        .config-panel .close-btn { background: #00a884; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        .config-panel .close-btn { background: var(--header-bg); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
         .config-panel .clear-btn { background: #b00020; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
         .config-panel .initials-btn { background: #34b7f1; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 8px; }
-
-        /* --- DRAG & DROP STYLE --- */
+        
         .dragging { opacity: 0.6; transform: scale(0.98); z-index: 10; }
         .drop-zone { border: 2px dashed var(--icon-color); border-radius: 8px; }
-
-        /* ====================================== */
-        /*  POP UP PILIH L/R - GAYA GAMING MERAH MARUN  */
-        /* ====================================== */
-        .posisi-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(145deg, #2b0a0a, #4a1212);
-            color: #fff;
-            padding: 25px 20px;
-            border-radius: 16px;
-            z-index: 200;
-            width: 85%;
-            max-width: 300px;
-            box-shadow: 0 0 20px rgba(139, 0, 0, 0.6), inset 0 0 10px rgba(255,255,255,0.1);
-            border: 2px solid #8b0000;
-            text-align: center;
-        }
-        .posisi-popup h4 {
-            font-size: 17px;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ffd6d6;
-        }
-        .btn-gaming-container {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-        .btn-gaming {
-            flex: 1;
-            padding: 12px 10px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 15px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 0 #600000, 0 5px 8px rgba(0,0,0,0.3);
-        }
-        .btn-gaming:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 #600000, 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .btn-kiri {
-            background: linear-gradient(180deg, #a82020, #8b0000);
-            color: #fff;
-            border: 1px solid #ff4444;
-        }
-        .btn-kanan {
-            background: linear-gradient(180deg, #a82020, #8b0000);
-            color: #fff;
-            border: 1px solid #ff4444;
-        }
-        .overlay-popup {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 199;
-        }
+        .posisi-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(145deg, #2b0a0a, #4a1212); color: #fff; padding: 25px 20px; border-radius: 16px; z-index: 200; width: 85%; max-width: 300px; box-shadow: 0 0 20px rgba(139, 0, 0, 0.6), inset 0 0 10px rgba(255,255,255,0.1); border: 2px solid #8b0000; text-align: center; }
+        .posisi-popup h4 { font-size: 17px; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1px; color: #ffd6d6; }
+        .btn-gaming-container { display: flex; gap: 12px; justify-content: center; }
+        .btn-gaming { flex: 1; padding: 12px 10px; border: none; border-radius: 10px; font-weight: bold; font-size: 15px; cursor: pointer; text-transform: uppercase; transition: all 0.2s ease; box-shadow: 0 4px 0 #600000, 0 5px 8px rgba(0,0,0,0.3); }
+        .btn-gaming:active { transform: translateY(4px); box-shadow: 0 0 0 #600000, 0 2px 4px rgba(0,0,0,0.3); }
+        .btn-kiri { background: linear-gradient(180deg, #a82020, #8b0000); color: #fff; border: 1px solid #ff4444; }
+        .btn-kanan { background: linear-gradient(180deg, #a82020, #8b0000); color: #fff; border: 1px solid #ff4444; }
+        .overlay-popup { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 199; }
     </style>
 </head>
 <body>
@@ -432,7 +369,7 @@
                     <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
                 </svg>
 
-                <input type="text" id="msgInput" placeholder="Pesan" onkeypress="checkEnter(event)" onclick="closeEmojiPanel()">
+                <input type="text" id="msgInput" class="main-input" placeholder="Ketik pesan" onkeypress="checkEnter(event)" onclick="closeEmojiPanel()" oninput="toggleSendIcon()">
 
                 <div class="input-right-icons">
                     <svg class="input-icon-btn" id="attachBtn" viewBox="0 0 24 24" style="transform: rotate(45deg);">
@@ -444,8 +381,11 @@
                 </div>
             </div>
 
-            <button class="send-button" id="sendBtn" onclick="kirimPesan()">
-                <svg viewBox="0 0 24 24">
+            <button class="send-button" id="actionBtn" onclick="kirimPesan()">
+                <svg id="micIcon" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
+                    <path d="M11.999 14.942c2.001 0 3.531-1.53 3.531-3.531V4.35c0-2.001-1.53-3.531-3.531-3.531S8.468 2.349 8.468 4.35v7.061c0 2.001 1.53 3.531 3.531 3.531zm6.238-3.53c0 3.531-2.942 6.002-6.237 6.002s-6.237-2.471-6.237-6.002H3.761c0 4.001 3.178 7.297 7.061 7.885v3.884h2.354v-3.884c3.884-.588 7.061-3.884 7.061-7.885h-2.001z"/>
+                </svg>
+                <svg id="sendIcon" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff" style="display: none;">
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
             </button>
@@ -454,7 +394,6 @@
         <div class="emoji-panel" id="emojiPanel"></div>
     </div>
 
-    <!-- POP UP PILIH KIRI / KANAN - GAYA BARU -->
     <div class="overlay-popup" id="overlayPosisi" onclick="tutupPopup()"></div>
     <div class="posisi-popup" id="posisiPopup">
         <h4>Pilih Posisi Pesan</h4>
@@ -464,34 +403,28 @@
         </div>
     </div>
 
-    <!-- MODAL EDIT WAKTU / PANGGILAN -->
     <div class="modal-overlay" id="editModal">
         <div class="modal-card">
             <h4 id="editTitle">Ubah Data</h4>
-
             <label>Posisi Pesan:</label>
             <select id="editCallSide">
                 <option value="left">Kiri (Penerima)</option>
                 <option value="right">Kanan (Pengirim)</option>
             </select>
-
             <label id="statusLabel" style="display: none;">Status Panggilan:</label>
             <select id="editCallStatus" style="display: none;">
                 <option value="done">Berhasil / Terjawab</option>
-                <option value="missed">❌ Tak Terjawab</option>
+                <option value="missed">❌ Tidak Dijawab / Tak Terjawab</option>
             </select>
-
             <label id="durasiLabel" style="display: none;">Durasi / Keterangan:</label>
             <input type="text" id="editCallDuration" placeholder="Contoh: 53 dtk" style="display: none;">
-
             <label>Jam & Menit (hh.mm):</label>
             <input type="text" id="editTimeValue" placeholder="Contoh: 17.27">
-
             <label>Tanggal Pesan:</label>
             <input type="date" id="editDateValue">
-
             <div class="modal-actions">
                 <button class="btn-cancel" onclick="closeEditModal()">Batal</button>
+                <button class="btn-delete" onclick="deleteSelectedMessage()">Hapus</button>
                 <button class="btn-send" onclick="saveEditChanges()">Simpan</button>
             </div>
         </div>
@@ -508,25 +441,22 @@
         </div>
     </div>
 
-    <!-- PENGATURAN LENGKAP DI SINI -->
     <div class="config-panel" id="configPanel">
         <h4>⚙️ Menu Simulasi</h4>
-
         <label>Tema WhatsApp:</label>
         <select id="themeSelect" onchange="changeTheme()">
-            <option value="light">☀️ Light Mode</option>
-            <option value="dark">🌙 Dark Mode</option>
+            <option value="light">☀️ Light Mode (Real)</option>
+            <option value="dark">🌙 Dark Mode (Real)</option>
+            <option value="amoled">🖤 Dark AMOLED (Pekat)</option>
+            <option value="blue">🌊 Tema Biru (Ocean)</option>
+            <option value="pink">🌸 Tema Pink (Sakura)</option>
         </select>
-
         <label>✏️ Ubah Nama / Nomor:</label>
         <input type="text" id="newNameInput" value="Pak Syarif Lg" placeholder="Contoh: 081234567890">
-
         <label>✏️ Ubah Status / Waktu:</label>
         <input type="text" id="newStatusInput" value="terakhir dilihat kemarin pukul 21.12" placeholder="Contoh: online / terakhir dilihat...">
-
         <label>🖼️ Foto Profil:</label>
         <input type="file" id="fileImgInput" accept="image/*" onchange="previewProfileFile()">
-
         <div class="btn-action-container">
             <button class="initials-btn" onclick="buatAvatarInisial()">✨ Buat Foto dari Inisial</button>
             <button class="clear-btn" onclick="clearAllChats()">🧹 Bersihkan Semua Chat</button>
@@ -538,7 +468,7 @@
 
 <script>
     const msgInput = document.getElementById('msgInput');
-    const sendBtn = document.getElementById('sendBtn');
+    const actionBtn = document.getElementById('actionBtn');
     const chatBox = document.getElementById('chatBox');
     const emojiPanel = document.getElementById('emojiPanel');
     const editModal = document.getElementById('editModal');
@@ -565,7 +495,44 @@
         initEmojiPanel();
         initCallButtons();
         setTimeout(scrollToBottom, 200);
+        setupKeyboardFix(); 
     });
+
+    function toggleSendIcon() {
+        const textVal = msgInput.value.trim();
+        const micIcon = document.getElementById('micIcon');
+        const sendIcon = document.getElementById('sendIcon');
+
+        if (textVal.length > 0) {
+            micIcon.style.display = 'none';
+            sendIcon.style.display = 'block';
+        } else {
+            micIcon.style.display = 'block';
+            sendIcon.style.display = 'none';
+        }
+    }
+
+    function setupKeyboardFix() {
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', () => {
+                const currentHeight = window.visualViewport.height;
+                document.body.style.height = currentHeight + 'px';
+                
+                if (currentHeight < window.innerHeight - 100) {
+                    document.body.classList.add('keyboard-aktif');
+                } else {
+                    document.body.classList.remove('keyboard-aktif');
+                }
+
+                window.scrollTo(0, 0);
+                setTimeout(scrollToBottom, 100);
+            });
+        } else {
+            window.addEventListener('resize', () => {
+                setTimeout(scrollToBottom, 100);
+            });
+        }
+    }
 
     function scrollToBottom() {
         chatBox.scrollTop = chatBox.scrollHeight;
@@ -585,6 +552,7 @@
                 e.stopPropagation();
                 msgInput.value += emoji;
                 msgInput.focus();
+                toggleSendIcon(); 
             };
             emojiPanel.appendChild(span);
         });
@@ -604,20 +572,19 @@
         emojiPanel.style.display = 'none';
     }
 
-    // ======================================
-    //  SISTEM POP UP PILIH L/R - BARU
-    // ======================================
     function bukaPopupPosisi(callback) {
         tempActionCallback = callback;
         document.getElementById('overlayPosisi').style.display = 'block';
         document.getElementById('posisiPopup').style.display = 'block';
     }
+    
     function pilihPosisi(arah) {
         document.getElementById('overlayPosisi').style.display = 'none';
         document.getElementById('posisiPopup').style.display = 'none';
         if(tempActionCallback) tempActionCallback(arah);
         tempActionCallback = null;
     }
+    
     function tutupPopup(){
         document.getElementById('overlayPosisi').style.display = 'none';
         document.getElementById('posisiPopup').style.display = 'none';
@@ -629,11 +596,13 @@
             kirimPesan();
         }
     }
+    
     function kirimPesan(){
         const textValue = msgInput.value.trim();
         if (textValue !== "") {
             bukaPopupPosisi((posisi) => {
                 processNewMessage('text', posisi, textValue);
+                toggleSendIcon(); 
             });
         }
     }
@@ -641,7 +610,7 @@
     function initCallButtons() {
         document.getElementById('callVoiceBtn').addEventListener('click', () => {
             bukaPopupPosisi((posisi) => {
-                const jenis = confirm("Status Panggilan:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tak Terjawab");
+                const jenis = confirm("Status Telepon Suara:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tidak Dijawab");
                 let data = {
                     type: 'call',
                     callType: 'voice',
@@ -659,12 +628,12 @@
 
         document.getElementById('callVideoBtn').addEventListener('click', () => {
             bukaPopupPosisi((posisi) => {
-                const jenis = confirm("Status Panggilan:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tak Terjawab");
+                const jenis = confirm("Status Telepon Video:\n\nOK = Berhasil / Terjawab\nBatal = ❌ Tidak Dijawab");
                 let data = {
                     type: 'call',
                     callType: 'video',
                     status: jenis ? 'done' : 'missed',
-                    duration: jenis ? prompt("Masukkan durasi (contoh: 29 dtk):", "29 dtk") : null,
+                    duration: jenis ? prompt("Masukkan durasi (contoh: 28 dtk):", "28 dtk") : null,
                     side: posisi,
                     time: getCurrentTime(),
                     date: new Date().toISOString()
@@ -715,6 +684,7 @@
         msgInput.value = '';
     }
 
+    /* 👇 FUNGSI RENDER TAMPILAN PANGGILAN WA VERSI TERBARU 👇 */
     function renderAllMessages() {
         const oldElements = chatBox.querySelectorAll('.message, .call-item, .date-divider');
         oldElements.forEach(el => el.remove());
@@ -740,21 +710,37 @@
                 element.draggable = true;
                 element.dataset.index = index;
 
-                const iconClass = item.status === 'missed' ? 'missed' : 'normal';
-                const iconSvg = item.callType === 'voice' 
-                    ? `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`
-                    : `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`;
+                const isMissed = item.status === 'missed';
+                const badgeClass = isMissed ? 'call-badge missed' : 'call-badge';
+                const iconClass = isMissed ? 'missed' : 'normal';
 
-                const title = item.status === 'missed' 
-                    ? (item.callType === 'voice' ? 'Telepon suara tak terjawab' : 'Panggilan video tak terjawab')
-                    : (item.callType === 'voice' ? 'Telepon suara' : 'Panggilan video');
+                // SVG Icon Telepon & Video Terbaru WA
+                let iconSvg = '';
+                if (item.callType === 'voice') {
+                    iconSvg = `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>`;
+                } else {
+                    iconSvg = `<svg class="call-icon ${iconClass}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 7l-7 5 7 5V7z"/>
+                        <rect x="1" y="5" width="15" height="14" rx="3" ry="3"/>
+                    </svg>`;
+                }
 
-                const subtitle = item.status === 'missed' 
-                    ? 'Ketuk untuk menelepon balik'
-                    : item.duration;
+                // Teks Judul WA Terbaru ("Telepon suara" / "Telepon video")
+                const title = isMissed 
+                    ? (item.callType === 'voice' ? 'Telepon suara tak terjawab' : 'Telepon video tak terjawab')
+                    : (item.callType === 'voice' ? 'Telepon suara' : 'Telepon video');
+
+                // Teks Subtitle ("Tidak dijawab", "Ketuk untuk menelepon balik", atau "53 dtk")
+                const subtitle = isMissed 
+                    ? (item.side === 'left' ? 'Ketuk untuk menelepon balik' : 'Tidak dijawab')
+                    : (item.duration || '0 dtk');
 
                 element.innerHTML = `
-                    ${iconSvg}
+                    <div class="${badgeClass}">
+                        ${iconSvg}
+                    </div>
                     <div class="call-content">
                         <div class="call-title">${title}</div>
                         <div class="call-subtitle">${subtitle}</div>
@@ -770,14 +756,15 @@
             } else {
                 element = document.createElement('div');
                 element.className = `message draggable ${item.side === 'left' ? 'msg-left' : 'msg-right'}`;
+                
+                if (item.content.includes('<img')) {
+                    element.classList.add('has-image');
+                }
+
                 element.draggable = true;
                 element.dataset.index = index;
 
-                if (item.content.includes('<img')) {
-                    element.innerHTML = `${item.content} <span class="time">${item.time} ${item.side === 'right' ? '<svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg>' : ''}</span>`;
-                } else {
-                    element.innerHTML = `${item.content} <span class="time">${item.time} ${item.side === 'right' ? '<svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg>' : ''}</span>`;
-                }
+                element.innerHTML = `${item.content} <span class="time">${item.time} ${item.side === 'right' ? '<svg class="tick-svg" width="16" height="11" viewBox="0 0 16 11"><path d="M4.5 6L7 8.5L14 1.5M1.5 6L4 8.5M11 1.5L7 5.5"/></svg>' : ''}</span>`;
 
                 element.addEventListener('contextmenu', (e) => {
                     e.preventDefault();
@@ -806,7 +793,6 @@
             document.getElementById('editCallStatus').style.display = 'block';
             document.getElementById('durasiLabel').style.display = 'block';
             document.getElementById('editCallDuration').style.display = 'block';
-
         } else {
             document.getElementById('editTitle').innerText = "Ubah Data Pesan";
             document.getElementById('editCallSide').value = item.side;
@@ -818,7 +804,6 @@
             document.getElementById('editCallDuration').style.display = 'none';
         }
 
-        // Memuat Tanggal ke dalam Form Edit
         if (item.date) {
             const dateObj = new Date(item.date);
             const yyyy = dateObj.getFullYear();
@@ -837,6 +822,18 @@
         selectedItemIndex = null;
     }
 
+    function deleteSelectedMessage() {
+        if (selectedItemIndex !== null) {
+            const konfirmasi = confirm("Apakah kamu yakin ingin menghapus pesan ini?");
+            if (konfirmasi) {
+                chatHistory.splice(selectedItemIndex, 1);
+                saveHistory();
+                renderAllMessages();
+                closeEditModal();
+            }
+        }
+    }
+
     function saveEditChanges() {
         const item = chatHistory[selectedItemIndex];
 
@@ -848,7 +845,6 @@
             item.duration = document.getElementById('editCallDuration').value;
         }
 
-        // Menyimpan Tanggal yang Diubah
         const newDate = document.getElementById('editDateValue').value;
         if (newDate) {
             const oldDateObj = item.date ? new Date(item.date) : new Date();
@@ -949,9 +945,6 @@
         }
     });
 
-    // ==========================================
-    // FITUR: BUAT AVATAR DARI INISIAL NAMA
-    // ==========================================
     function buatAvatarInisial() {
         const namaLengkap = document.getElementById('newNameInput').value.trim();
         if (!namaLengkap) return;
